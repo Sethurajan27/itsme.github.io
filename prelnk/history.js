@@ -16,7 +16,7 @@ fetch("history.html")
 		var concatenatedText = text1 + text2;
 		
 		// Use the innerHTML property to set the text of the HTML element to the concatenated text
-		document.getElementById("start ").innerHTML = concatenatedText;
+		document.getElementById("start").innerHTML = concatenatedText;
 
 		myParagraph.textContent = concatenatedText;
 	})
