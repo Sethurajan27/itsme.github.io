@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Coding Beauty Tutorial</title>
+  </head>
+  <body>
+	<h1>Prev page : <span id="preUrl"></span></h1>
+    <a href="index.html">BACK</a>
+	<script>
+		var preLink = document.referrer;
+		document.getElementById("preUrl").textContent = prevLink;
+	</script>
+  </body>
+</html>
