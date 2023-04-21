@@ -1,4 +1,4 @@
-// myscript.js
+// history.js
 // Use the fetch() function to retrieve the contents of the HTML file
 fetch("history.html")
 	.then(response => response.text())
