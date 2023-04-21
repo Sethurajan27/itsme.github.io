@@ -19,5 +19,7 @@ fetch("history.html")
 		
 		// Use the innerHTML property to set the text of the HTML element to the concatenated text
 		document.getElementById("concatenated-text").innerHTML = concatenatedText;
+	
+		myParagraph.textContent = concatenatedText;
 	})
 	.catch(error => console.log(error));
