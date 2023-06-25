@@ -157,7 +157,9 @@
                     print("Data written successfully.")
             except IOError:
                 print(f"Error writing to file '{file_path}'.")
-            
+
+        writeTxt("22,22,39,15,41,4,2023-06-25 21:56:56.144591")
+        
         day_m6 = getFormattedDate(getDateTimeByN(-6).date())
         day_m5 = getFormattedDate(getDateTimeByN(-5).date())
         day_m4 = getFormattedDate(getDateTimeByN(-4).date())
