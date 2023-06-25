@@ -139,7 +139,7 @@
             formated_day = ' '+str(date.day)+' '+getMonthName(date.month)+'  \n'+str(date.year)
             return formated_day
         def readTxt():
-            file_path = url("storage.txt")  # Replace with the actual path to your text file
+            file_path = "storage.txt"  # Replace with the actual path to your text file
             try:
                 with open(file_path, "r") as file:
                     data = file.read()
@@ -149,7 +149,7 @@
             except IOError:
                 print(f"Error reading file '{file_path}'.")
         def writeTxt(data):
-            file_path = url("storage.txt")  # Replace with the actual path to your text file
+            file_path = "storage.txt"  # Replace with the actual path to your text file
 
             try:
                 with open(file_path, "w") as file:
