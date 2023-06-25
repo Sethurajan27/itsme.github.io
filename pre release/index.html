@@ -192,27 +192,27 @@
             
             if(storage_date == getDateTimeByN(0).date()):
                 y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],edata[0])
-                print('11')
+                # print('11')
             elif(storage_date == getDateTimeByN(-1).date()):
                 y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],np.random.randint(low=0,high=100))
-                print('22')
+                # print('22')
             elif(storage_date == getDateTimeByN(-2).date()):
                 y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                print('33')
+                # print('33')
             elif(storage_date == getDateTimeByN(-3).date()):
                 y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                print('44')
+                # print('44')
             elif(storage_date == getDateTimeByN(-4).date()):
                 y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                print('55')
+                # print('55')
             elif(storage_date == getDateTimeByN(-5).date()):
                 y1,y2,y3,y4,y5,y6 = (edata[5],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                print('66')
+                # print('66')
             elif(storage_date <= getDateTimeByN(-6).date()):
                 y1,y2,y3,y4,y5,y6 = (np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                print('77')
+                # print('77')
             
-            print('changed dates',y6,y5,y4,y3,y2,y1)
+            # print('changed dates',y6,y5,y4,y3,y2,y1)
             writeTxt(str(y5)+','+str(y4)+','+str(y3)+','+str(y2)+','+str(y1)+','+str(y6)+','+str(getDateTimeByN(0)))
             encrypted_pre_data = readTxt().split(',')
         else:
