@@ -1,160 +1,314 @@
 <!DOCTYPE html>
 <html>
 <style>
-body, html {
-  height: 100%;
-  margin: 0;
-}
+  body,
+  html {
+    height: 100%;
+    margin: 0;
+  }
 
-.bgimg {
-  background-image: url("webimg.jpg");
-  height: 100%;
-  background-position: center;
-  background-size: cover;
-  position: relative;
-  color: white;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 25px;
-}
+  .bgimg {
+    background-image: url("webimg.jpg");
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    color: white;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 25px;
+  }
 
-.topleft {
-  position: absolute;
-  top: 0;
-  left: 16px;
-}
+  .topleft {
+    position: absolute;
+    top: 0;
+    left: 16px;
+  }
 
-.topright {
-  position: absolute;
-  top: 0;
-  right: 5%;
-}
+  .topright {
+    position: absolute;
+    top: 0;
+    right: 5%;
+  }
 
-.bottomleft {
-  position: absolute;
-  bottom: 0;
-  left: 16px;
-}
+  .bottomleft {
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+  }
 
-.middle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
+  .middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
 
-.animated-bottommiddle {
+  .centered-graph {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    border: 10% auto;
+  }
+
+  .animated-bottommiddle {
     position: absolute;
     top: 80%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-}
-
-instagram{
-  background: #f09433; 
-background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
   }
 
-hr {
-  margin: auto;
-  width: 90%;
-}
+  instagram {
+    background: #f09433;
+    background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: -webkit-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f09433', endColorstr='#bc1888', GradientType=1);
+  }
 
-insta { 
-  color: black;
-} 
+  hr {
+    margin: auto;
+    width: 90%;
+  }
 
-mark { 
-  color: red;
-  background-color: black;
-  vertical-align: -webkit-baseline-middle;
-}
+  insta {
+    color: black;
+  }
 
-a:-webkit-any-link {
-  color: wheat;
-  cursor: pointer;
-  text-decoration: underline;
-}
+  mark {
+    color: red;
+    background-color: black;
+    vertical-align: -webkit-baseline-middle;
+  }
+
+  a:-webkit-any-link {
+    color: wheat;
+    cursor: pointer;
+    text-decoration: underline;
+  }
 </style>
+
 <body>
-<head>
+
+  <head>
     <title>My Insta ~Sethurajan27</title>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
   </head>
-<div class="bgimg">
-  <div class="topright">
-    <p style="font-size:40px"><insta><b><span id="blink1"><instagram>INSTAGRAM</instagram>
-</span></b></insta></p>
+  <div class="bgimg">
+    <div class="topright">
+      <p style="font-size:40px">
+        <insta><b><span id="blink1">
+              <instagram>INSTAGRAM</instagram>
+            </span></b></insta>
+      </p>
+    </div>
+
+    <div class="topleft">
+      <h1 style="font-size:40px">&ensp;<insta><u>
+            <insta></insta>
+          </u></h1>
+      <p
+        style="text-align: justify;margin-top: 0%; margin-bottom: 0%; margin-left: 0%; margin-right: 1%;font-size:30px">
+        &emsp;<mark></p></mark>
+    </div>
+
+    <div class="centered-graph">
+      <py-config>
+        packages = ["matplotlib", "pandas", "numpy"]
+      </py-config>
+
+      <py-script>
+        from matplotlib import pyplot as plt
+        import pandas as pd
+        import numpy as np
+        import datetime as dt
+
+        def getMonthName(n):
+            dmonth = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'}
+            return dmonth[n]
+        def getDateTimeByN(nday):
+            today = dt.datetime.today()
+            return today + dt.timedelta(days=nday)
+        def getFormattedDate(date):
+            formated_day = ' '+str(date.day)+' '+getMonthName(date.month)+'  \n'+str(date.year)
+            return formated_day
+        def readTxt():
+            file_path = "storage.txt"  # Replace with the actual path to your text file
+            try:
+                with open(file_path, "r") as file:
+                    data = file.read()
+                    return (data)  # Replace this line with your desired processing logic
+            except FileNotFoundError:
+                print(f"File '{file_path}' not found.")
+            except IOError:
+                print(f"Error reading file '{file_path}'.")
+        def writeTxt(data):
+            file_path = "storage.txt"  # Replace with the actual path to your text file
+
+            try:
+                with open(file_path, "w") as file:
+                    file.write(data)
+                    # print("Data written successfully.")
+            except IOError:
+                print(f"Error writing to file '{file_path}'.")
+
+        writeTxt("22,22,39,15,41,4,2023-06-22 21:56:56.144591")
+        
+        day_m6 = getFormattedDate(getDateTimeByN(-6).date())
+        day_m5 = getFormattedDate(getDateTimeByN(-5).date())
+        day_m4 = getFormattedDate(getDateTimeByN(-4).date())
+        day_m3 = getFormattedDate(getDateTimeByN(-3).date())
+        day_m2 = getFormattedDate(getDateTimeByN(-2).date())
+        day_m1 = getFormattedDate(getDateTimeByN(-1).date())
+        day_m0 = getFormattedDate(getDateTimeByN(0).date())
+
+        x=[day_m6,day_m5,day_m4,day_m3,day_m2,day_m1,day_m0]
+        y = [0,0,0,0,0,0,0]
+
+        # print(dt.datetime.today())
+
+        encrypted_pre_data = readTxt().split(',')
+            
+        yr=int(encrypted_pre_data[6].split()[0].split('-')[0])
+        mn=int(encrypted_pre_data[6].split()[0].split('-')[1])
+        da=int(encrypted_pre_data[6].split()[0].split('-')[2])
+        hr=int(encrypted_pre_data[6].split()[1].split(':')[0])
+        mi=int(encrypted_pre_data[6].split()[1].split(':')[1])
+        se=int(encrypted_pre_data[6].split()[1].split(':')[2].split('.')[0])
+        mse=int(encrypted_pre_data[6].split()[1].split(':')[2].split('.')[1])
+
+        storage_date = dt.datetime(yr,mn,da,hr,mi,se,mse).date()
+        # print('origina dates',encrypted_pre_data[0:6])
+
+        if(storage_date != dt.datetime.today().date()):
+            edata = encrypted_pre_data[0:6]
+            y6,y5,y4,y3,y2,y1 = (0,0,0,0,0,0)
+            
+            if(storage_date == getDateTimeByN(0).date()):
+                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],edata[0])
+                # print('11')
+            elif(storage_date == getDateTimeByN(-1).date()):
+                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],np.random.randint(low=0,high=100))
+                # print('22')
+            elif(storage_date == getDateTimeByN(-2).date()):
+                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+                # print('33')
+            elif(storage_date == getDateTimeByN(-3).date()):
+                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+                # print('44')
+            elif(storage_date == getDateTimeByN(-4).date()):
+                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+                # print('55')
+            elif(storage_date == getDateTimeByN(-5).date()):
+                y1,y2,y3,y4,y5,y6 = (edata[5],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+                # print('66')
+            elif(storage_date <= getDateTimeByN(-6).date()):
+                y1,y2,y3,y4,y5,y6 = (np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+                # print('77')
+            
+            # print('changed dates',y6,y5,y4,y3,y2,y1)
+            writeTxt(str(y5)+','+str(y4)+','+str(y3)+','+str(y2)+','+str(y1)+','+str(y6)+','+str(getDateTimeByN(0)))
+            encrypted_pre_data = readTxt().split(',')
+        else:
+        #     print(True)
+            pass
+
+        # print(encrypted_pre_data[6],dt.datetime.today())
+        # print(dt.datetime(yr,mn,da,hr,mi,se,mse).date())
+        # print(yr,mn,da,hr,mi,se,mse)
+        # print(type(dt.datetime(yr,mn,da,hr,mi,se,mse)))
+
+        # print(y)
+        for i in range(6):
+            y[i] = int(encrypted_pre_data[i])
+        y[6] = np.random.randint(low=0,high=20)
+
+        # print(y)
+
+        plt.subplot(1,1,1)
+        plt.tick_params(axis='x',rotation=0)
+        plt.bar(x,y,color='g',)
+        plt.plot(x,y,color='r')
+        plt.xlabel('Day(s)')
+        plt.ylabel('Viewes %')
+        plt.show()
+
+        display(plt)
+        # print(plt)
+      </py-script>
+    </div>
+
+    <div class="animated-bottommiddle">
+      <p style="font-size:20px"> <span id="blink2">⏳⌛⏳</span></p>
+      <hr>
+      <p id="demo" style="font-size:20px"></p>
+    </div>
+
+    <div class="bottomleft">
+      <p>
+        <insta><s><b>Wasting</s>...</b></insta>
+      </p>
+    </div>
   </div>
 
-  <div class="topleft">
-   <h1 style="font-size:40px">&ensp;<insta><u><insta></insta></u></h1>
-   <p style="text-align: justify;margin-top: 0%; margin-bottom: 0%; margin-left: 0%; margin-right: 1%;font-size:30px">&emsp;<mark></p></mark>
-  </div>
+  <script>
+    // Set the date we're counting down to
+    var countDownDate = new Date("June 27, 2023 00:00:00").getTime();
 
-  <div class="animated-bottommiddle">
-    <p style="font-size:20px"> <span id="blink2">⏳⌛⏳</span></p>  
-    <hr>
-    <p id="demo" style="font-size:20px"></p>
-  </div>
+    // Update the count down every 1 second
+    var countdownfunction = setInterval(function () {
 
-  <div class="bottomleft">
-    <p><insta><s><b>Wasting</s>...</b></insta></p>
-  </div>
-</div>
+      // Get todays date and time
+      var now = new Date().getTime();
 
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("June 27, 2023 00:00:00").getTime();
+      // Find the distance between now an the count down date
+      var distance = countDownDate - now;
 
-// Update the count down every 1 second
-var countdownfunction = setInterval(function() {
+      // Time calculations for days, hours, minutes and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-  // Get todays date and time
-  var now = new Date().getTime();
-  
-  // Find the distance between now an the count down date
-var distance = countDownDate - now;
-  
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-  
-  // Output the result in an element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-  
-  // If the count down is over, write some text 
-  if (distance < 0) {
-    clearInterval(countdownfunction);
-    document.getElementById("demo").innerHTML = "EXPIRED";
-  }
-}, 1000);
-</script>
-<script type="text/javascript">
-      (function () {
-        var blink1 = ["😶","EVERYTHING😐","YOU🙂","CAN😄","IMAGINE😁","IS😂","REAL🤩"],
+      // Output the result in an element with id="demo"
+      document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+      // If the count down is over, write some text 
+      if (distance < 0) {
+        clearInterval(countdownfunction);
+        document.getElementById("demo").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+  <script type="text/javascript">
+    (function () {
+      var blink1 = ["😶", "EVERYTHING😐", "YOU🙂", "CAN😄", "IMAGINE😁", "IS😂", "REAL🤩"],
         i = 0;
-        setInterval(function(){ $('#blink1').fadeOut(function(){
-            $(this).html(blink1[(i = (i + 1) % blink1.length)]).fadeIn();
-          }); }, 2000)
-      })();
-    </script>
-<script type="text/javascript">
-      (function () {
-        var blink2 = ["⌛⏳⌛","⏳⌛⏳"],
+      setInterval(function () {
+        $('#blink1').fadeOut(function () {
+          $(this).html(blink1[(i = (i + 1) % blink1.length)]).fadeIn();
+        });
+      }, 2000)
+    })();
+  </script>
+  <script type="text/javascript">
+    (function () {
+      var blink2 = ["⌛⏳⌛", "⏳⌛⏳"],
         i = 0;
-        setInterval(function(){ $('#blink2').fadeOut(function(){
-            $(this).html(blink2[(i = (i + 1) % blink2.length)]).fadeIn();
-          }); }, 1000)
-      })();
-</script>
+      setInterval(function () {
+        $('#blink2').fadeOut(function () {
+          $(this).html(blink2[(i = (i + 1) % blink2.length)]).fadeIn();
+        });
+      }, 1000)
+    })();
+  </script>
 </body>
+
 </html>
