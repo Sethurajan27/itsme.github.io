@@ -128,6 +128,7 @@
         import pandas as pd
         import numpy as np
         import datetime as dt
+        import io
         def getMonthName(n):
             dmonth = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'}
             return dmonth[n]
@@ -243,6 +244,18 @@
         ax.set_xlabel('Day(s)')
         ax.set_ylabel('Viewes %')
         ax.set_title('~ Views and Access ~')
+
+        # Save the plot as an image with transparent background
+        buffer = io.BytesIO()
+        plt.savefig(buffer, format='png', transparent=True)
+        buffer.seek(0)
+        
+        # Read the image from the buffer
+        image = plt.imread(buffer)
+        
+        # Display the image with transparent background
+        plt.imshow(image, aspect='auto')
+        plt.axis('off')
         plt.show()
         
         display(plt)
