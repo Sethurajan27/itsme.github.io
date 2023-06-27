@@ -128,7 +128,6 @@
         import pandas as pd
         import numpy as np
         import datetime as dt
-
         def getMonthName(n):
             dmonth = {1:'Jan',2:'Feb',3:'Mar',4:'Apr',5:'May',6:'Jun',7:'Jul',8:'Aug',9:'Sep',10:'Oct',11:'Nov',12:'Dec'}
             return dmonth[n]
@@ -150,16 +149,14 @@
                 print(f"Error reading file '{file_path}'.")
         def writeTxt(data):
             file_path = "storage.txt"  # Replace with the actual path to your text file
-
             try:
                 with open(file_path, "w") as file:
                     file.write(data)
-                    # print("Data written successfully.")
+                # print("Data written successfully.")
             except IOError:
                 print(f"Error writing to file '{file_path}'.")
-
-        writeTxt("22,22,39,15,41,4,2023-06-22 21:56:56.144591")
         
+        writeTxt("22,22,39,15,41,4,2023-06-22 21:56:56.144591")
         day_m6 = getFormattedDate(getDateTimeByN(-6).date())
         day_m5 = getFormattedDate(getDateTimeByN(-5).date())
         day_m4 = getFormattedDate(getDateTimeByN(-4).date())
@@ -167,14 +164,13 @@
         day_m2 = getFormattedDate(getDateTimeByN(-2).date())
         day_m1 = getFormattedDate(getDateTimeByN(-1).date())
         day_m0 = getFormattedDate(getDateTimeByN(0).date())
-
         x=[day_m6,day_m5,day_m4,day_m3,day_m2,day_m1,day_m0]
         y = [0,0,0,0,0,0,0]
-
+        
         # print(dt.datetime.today())
-
+        
         encrypted_pre_data = readTxt().split(',')
-            
+                    
         yr=int(encrypted_pre_data[6].split()[0].split('-')[0])
         mn=int(encrypted_pre_data[6].split()[0].split('-')[1])
         da=int(encrypted_pre_data[6].split()[0].split('-')[2])
@@ -182,65 +178,74 @@
         mi=int(encrypted_pre_data[6].split()[1].split(':')[1])
         se=int(encrypted_pre_data[6].split()[1].split(':')[2].split('.')[0])
         mse=int(encrypted_pre_data[6].split()[1].split(':')[2].split('.')[1])
-
+        
         storage_date = dt.datetime(yr,mn,da,hr,mi,se,mse).date()
         # print('origina dates',encrypted_pre_data[0:6])
-
+        
         if(storage_date != dt.datetime.today().date()):
             edata = encrypted_pre_data[0:6]
             y6,y5,y4,y3,y2,y1 = (0,0,0,0,0,0)
-            
-            if(storage_date == getDateTimeByN(0).date()):
-                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],edata[0])
-                # print('11')
-            elif(storage_date == getDateTimeByN(-1).date()):
-                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],np.random.randint(low=0,high=100))
-                # print('22')
-            elif(storage_date == getDateTimeByN(-2).date()):
-                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                # print('33')
-            elif(storage_date == getDateTimeByN(-3).date()):
-                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                # print('44')
-            elif(storage_date == getDateTimeByN(-4).date()):
-                y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                # print('55')
-            elif(storage_date == getDateTimeByN(-5).date()):
-                y1,y2,y3,y4,y5,y6 = (edata[5],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                # print('66')
-            elif(storage_date <= getDateTimeByN(-6).date()):
-                y1,y2,y3,y4,y5,y6 = (np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
-                # print('77')
-            
+                    
+        if(storage_date == getDateTimeByN(0).date()):
+            y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],edata[0])
+            # print('11')
+        elif(storage_date == getDateTimeByN(-1).date()):
+            y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],edata[1],np.random.randint(low=0,high=100))
+            # print('22')
+        elif(storage_date == getDateTimeByN(-2).date()):
+            y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],edata[2],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+            # print('33')
+        elif(storage_date == getDateTimeByN(-3).date()):
+            y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],edata[3],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+            # print('44')
+        elif(storage_date == getDateTimeByN(-4).date()):
+            y1,y2,y3,y4,y5,y6 = (edata[5],edata[4],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+            # print('55')
+        elif(storage_date == getDateTimeByN(-5).date()):
+            y1,y2,y3,y4,y5,y6 = (edata[5],np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+            # print('66')
+        elif(storage_date <= getDateTimeByN(-6).date()):
+            y1,y2,y3,y4,y5,y6 = (np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100),np.random.randint(low=0,high=100))
+            # print('77')
+        
             # print('changed dates',y6,y5,y4,y3,y2,y1)
             writeTxt(str(y5)+','+str(y4)+','+str(y3)+','+str(y2)+','+str(y1)+','+str(y6)+','+str(getDateTimeByN(0)))
             encrypted_pre_data = readTxt().split(',')
         else:
         #     print(True)
             pass
-
         # print(encrypted_pre_data[6],dt.datetime.today())
         # print(dt.datetime(yr,mn,da,hr,mi,se,mse).date())
         # print(yr,mn,da,hr,mi,se,mse)
         # print(type(dt.datetime(yr,mn,da,hr,mi,se,mse)))
-
+        
         # print(y)
         for i in range(6):
             y[i] = int(encrypted_pre_data[i])
         y[6] = np.random.randint(low=0,high=20)
-
         # print(y)
-
+        
+        # Set up the plot
+        fig, ax = plt.subplots()
+        # Set the background color
+        ax.set_facecolor('none')
+        # Set the inside background color
+        ax.set_axisbelow(True)
+        ax.yaxis.grid(color='black', linestyle='dashed', linewidth=1)
+        # Create the bar graph
+        ax.bar(x, y, color='blue')
+        
         plt.subplot(1,1,1)
         plt.tick_params(axis='x',rotation=0)
         plt.bar(x,y,color='g',)
         plt.plot(x,y,color='r')
-        plt.xlabel('Day(s)')
-        plt.ylabel('Viewes %')
+        # Customize the plot
+        ax.set_xlabel('Day(s)')
+        ax.set_ylabel('Viewes %')
+        ax.set_title('views and Access')
         plt.show()
-
+        
         display(plt)
-        # print(plt)
       </py-script>
     </div>
 
